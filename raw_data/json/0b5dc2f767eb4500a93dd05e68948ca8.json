@@ -1,0 +1,633 @@
+[
+    {
+        "page": 1,
+        "data": {
+            "route_code": {"bn": "এ-২০২নং", "en": "A-202 No."},
+            "route_name": {
+                "bn": "সাভার হতে আমুলিয়া স্টাফ কোয়ার্টার",
+                "en": "Savar to Amulia Staff Quarter"
+            },
+            "routes": [
+                {"name": {"bn": "সাভার", "en": "Savar"}, "order": 0, "distance": 0},
+                {"name": {"bn": "গাবতলী", "en": "Gabtoli"}, "order": 1, "distance": 13.8},
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 2, "distance": 16.9},
+                {"name": {"bn": "মিরপুর-১০", "en": "Mirpur-10"}, "order": 3, "distance": 18.8},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 4, "distance": 26.3},
+                {"name": {"bn": "গুলশান-১", "en": "Gulshan-1"}, "order": 5, "distance": 28.7},
+                {"name": {"bn": "বনশ্রী", "en": "Bonoshri"}, "order": 6, "distance": 35},
+                {"name": {"bn": "আমুলিয়া স্টাফ কোয়ার্টার", "en": "Amulia Staff Quarter"}, "order": 7, "distance": 43}
+            ]
+        }
+    },
+    {
+        "page": 2,
+        "data": {
+            "route_code": {"bn": "এ-২০৭নং", "en": "A-207 No."},
+            "route_name": {
+                "bn": "টঙ্গী (চেরাগআলী) হতে ঢাকেশ্বরী",
+                "en": "Tongi (Cherag Ali) to Dhakeshwari"
+            },
+            "routes": [
+                {"name": {"bn": "টঙ্গী", "en": "Tongi"}, "order": 0, "distance": 0},
+                {"name": {"bn": "আজমপুর", "en": "Azampur"}, "order": 1, "distance": 7.4},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 2, "distance": 19},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 3, "distance": 21.5},
+                {"name": {"bn": "মানিক মিয়া", "en": "Manik Mia"}, "order": 4, "distance": 23.3},
+                {"name": {"bn": "সিটি কলেজ", "en": "City College"}, "order": 5, "distance": 25.4},
+                {"name": {"bn": "নীলক্ষেত", "en": "Nilkhet"}, "order": 6, "distance": 26.5},
+                {"name": {"bn": "ঢাকেশ্বরী এতিমখানা", "en": "Dhakeshwari Etimkhana"}, "order": 7, "distance": 28}
+            ]
+        }
+    },
+    {
+        "page": 3,
+        "data": {
+            "route_code": {"bn": "এ-২১৯নং", "en": "A-219 No."},
+            "route_name": {
+                "bn": "ফুলবাড়িয়া হতে কাপাসিয়া",
+                "en": "Fulbaria to Kapasia"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মগবাজার", "en": "Magbazar"}, "order": 1, "distance": 4.2},
+                {"name": {"bn": "নাবিস্কো", "en": "Nabisco"}, "order": 2, "distance": 8.4},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 3, "distance": 9.4},
+                {"name": {"bn": "বনানী", "en": "Banani"}, "order": 4, "distance": 11.1},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 5, "distance": 19.8},
+                {"name": {"bn": "টঙ্গী", "en": "Tongi"}, "order": 6, "distance": 25},
+                {"name": {"bn": "গাজীপুর চৌরাস্তা", "en": "Gazipur Crossroad"}, "order": 7, "distance": 36.5},
+                {"name": {"bn": "রাজেন্দ্রপুর", "en": "Rajendrapur"}, "order": 8, "distance": 48.6},
+                {"name": {"bn": "রাজেন্দ্রপুর বাজার", "en": "Rajendrapur Bazar"}, "order": 9, "distance": 54},
+                {"name": {"bn": "রাজাবাড়ী", "en": "Rajabari"}, "order": 10, "distance": 58.8},
+                {"name": {"bn": "কাপাসিয়া", "en": "Kapasia"}, "order": 11, "distance": 66}
+            ]
+        }
+    },
+    {
+        "page": 4,
+        "data": {
+            "route_code": {"bn": "এ-২২০নং", "en": "A-220 No."},
+            "route_name": {
+                "bn": "ফুলবাড়িয়া হতে শ্রীপুর",
+                "en": "Fulbaria to Sreepur"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মগবাজার", "en": "Magbazar"}, "order": 1, "distance": 4.2},
+                {"name": {"bn": "নাবিস্কো", "en": "Nabisco"}, "order": 2, "distance": 8.4},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 3, "distance": 9.4},
+                {"name": {"bn": "বনানী", "en": "Banani"}, "order": 4, "distance": 11.1},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 5, "distance": 19.8},
+                {"name": {"bn": "টঙ্গী", "en": "Tongi"}, "order": 6, "distance": 25},
+                {"name": {"bn": "গাজীপুর চৌরাস্তা", "en": "Gazipur Crossroad"}, "order": 7, "distance": 36.5},
+                {"name": {"bn": "রাজেন্দ্রপুর চৌরাস্তা", "en": "Rajendrapur Crossroad"}, "order": 8, "distance": 48.6},
+                {"name": {"bn": "হোতা পাড়া", "en": "Hota Para"}, "order": 9, "distance": 52.3},
+                {"name": {"bn": "বাঘের বাজার", "en": "Bagher Bazar"}, "order": 10, "distance": 57.3},
+                {"name": {"bn": "মান্ডা চৌরাস্তা", "en": "Manda Crossroad"}, "order": 11, "distance": 60.3},
+                {"name": {"bn": "শ্রীপুর", "en": "Sreepur"}, "order": 12, "distance": 70.6},
+                {"name": {"bn": "বমী", "en": "Bomi"}, "order": 13, "distance": 77.5}
+            ]
+        }
+    },
+    {
+        "page": 5,
+        "data": {
+            "route_code": {"bn": "এ-২২২নং", "en": "A-222 No."},
+            "route_name": {
+                "bn": "ফুলবাড়িয়া হতে গাজীপুর",
+                "en": "Fulbaria to Gazipur"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "কাজলাইল", "en": "Kazlail"}, "order": 1, "distance": 2},
+                {"name": {"bn": "মগবাজার", "en": "Magbazar"}, "order": 2, "distance": 4.2},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 3, "distance": 9.4},
+                {"name": {"bn": "কাজলি", "en": "Kajli"}, "order": 4, "distance": 11.1},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 5, "distance": 19.8},
+                {"name": {"bn": "টঙ্গী", "en": "Tongi"}, "order": 6, "distance": 25},
+                {"name": {"bn": "গাজীপুর চৌরাস্তা", "en": "Gazipur Crossroad"}, "order": 7, "distance": 36.5},
+                {"name": {"bn": "গাজীপুর", "en": "Gazipur"}, "order": 8, "distance": 41.5}
+            ]
+        }
+    },
+    {
+        "page": 6,
+        "data": {
+            "route_code": {"bn": "এ-২২৪নং", "en": "A-224 No."},
+            "route_name": {
+                "bn": "ফুলবাড়িয়া হতে পাটুরিয়া",
+                "en": "Fulbaria to Paturia"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "হাইকোর্ট", "en": "High Court"}, "order": 1, "distance": 0.7},
+                {"name": {"bn": "মৎসভবন", "en": "Matsya Bhaban"}, "order": 2, "distance": 1.2},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 3, "distance": 3.4},
+                {"name": {"bn": "সাইন্সল্যাব", "en": "Science Lab"}, "order": 4, "distance": 4.9},
+                {"name": {"bn": "কলাবাগান", "en": "Kalabagan"}, "order": 5, "distance": 6.7},
+                {"name": {"bn": "আসাদগেট", "en": "Asad Gate"}, "order": 6, "distance": 8.3},
+                {"name": {"bn": "টেকনিক্যাল", "en": "Technical"}, "order": 7, "distance": 11.3},
+                {"name": {"bn": "গাবতলী", "en": "Gabtoli"}, "order": 8, "distance": 12.3},
+                {"name": {"bn": "মানিকগঞ্জ", "en": "Manikganj"}, "order": 9, "distance": 65},
+                {"name": {"bn": "পাটুরিয়া", "en": "Paturia"}, "order": 10, "distance": 92.3}
+            ]
+        }
+    },
+    {
+        "page": 7,
+        "data": {
+            "route_code": {"bn": "এ-২২৫নং", "en": "A-225 No."},
+            "route_name": {
+                "bn": "সায়েদাবাদ হতে গাজীপুর",
+                "en": "Sayedabad to Gazipur"
+            },
+            "routes": [
+                {"name": {"bn": "সায়েদাবাদ", "en": "Sayedabad"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মালিবাগ", "en": "Malibagh"}, "order": 1, "distance": 4},
+                {"name": {"bn": "সাতরাস্তা", "en": "Satrasta"}, "order": 2, "distance": 8},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 3, "distance": 12},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 4, "distance": 20},
+                {"name": {"bn": "টঙ্গীবাজার", "en": "Tongi Bazar"}, "order": 5, "distance": 24},
+                {"name": {"bn": "চেরাগআলী", "en": "Cherag Ali"}, "order": 6, "distance": 27},
+                {"name": {"bn": "বোর্ড বাজার", "en": "Board Bazar"}, "order": 7, "distance": 31},
+                {"name": {"bn": "চৌরাস্তা", "en": "Chourasta"}, "order": 8, "distance": 37},
+                {"name": {"bn": "গাজীপুর", "en": "Gazipur"}, "order": 9, "distance": 42}
+            ]
+        }
+    },
+    {
+        "page": 8,
+        "data": {
+            "route_code": {"bn": "এ-২২৮নং", "en": "A-228 No."},
+            "route_name": {
+                "bn": "সায়েদাবাদ হতে নারায়ণগঞ্জ",
+                "en": "Sayedabad to Narayanganj"
+            },
+            "routes": [
+                {"name": {"bn": "সায়েদাবাদ", "en": "Sayedabad"}, "order": 0, "distance": 0},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 1, "distance": 1},
+                {"name": {"bn": "জুরাইন", "en": "Jurain"}, "order": 2, "distance": 3},
+                {"name": {"bn": "পোস্তগোলা", "en": "Postgola"}, "order": 3, "distance": 3.5},
+                {"name": {"bn": "নারায়ণগঞ্জ", "en": "Narayanganj"}, "order": 4, "distance": 15.8}
+            ]
+        }
+    },
+    {
+        "page": 9,
+        "data": {
+            "route_code": {"bn": "এ-২৩৪নং", "en": "A-234 No."},
+            "route_name": {
+                "bn": "মদনগঞ্জ হতে আজিমপুর",
+                "en": "Madanganj to Azimpur"
+            },
+            "routes": [
+                {"name": {"bn": "মদনগঞ্জ", "en": "Madanganj"}, "order": 0, "distance": 0},
+                {"name": {"bn": "সায়েদাবাদ", "en": "Sayedabad"}, "order": 1, "distance": 25.9},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 2, "distance": 27.9},
+                {"name": {"bn": "প্রেসক্লাব", "en": "Press Club"}, "order": 3, "distance": 28.9},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 4, "distance": 30.6},
+                {"name": {"bn": "নীলক্ষেত", "en": "Nilkhet"}, "order": 5, "distance": 32.5},
+                {"name": {"bn": "আজিমপুর", "en": "Azimpur"}, "order": 6, "distance": 33.1}
+            ]
+        }
+    },
+    {
+        "page": 10,
+        "data": {
+            "route_code": {"bn": "এ-২৩৬নং", "en": "A-236 No."},
+            "route_name": {
+                "bn": "সায়েদাবাদ হতে নারায়ণগঞ্জ",
+                "en": "Sayedabad to Narayanganj"
+            },
+            "routes": [
+                {"name": {"bn": "সায়েদাবাদ", "en": "Sayedabad"}, "order": 0, "distance": 0},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 1, "distance": 0.8},
+                {"name": {"bn": "শনিরআখড়া", "en": "Shanir Akhra"}, "order": 2, "distance": 2.6},
+                {"name": {"bn": "রায়েরবাগ", "en": "Rayerbag"}, "order": 3, "distance": 3.5},
+                {"name": {"bn": "লিংক রোড", "en": "Link Road"}, "order": 4, "distance": 6},
+                {"name": {"bn": "নারায়ণগঞ্জ", "en": "Narayanganj"}, "order": 5, "distance": 16.2}
+            ]
+        }
+    },
+    {
+        "page": 11,
+        "data": {
+            "route_code": {"bn": "এ-২৪০নং", "en": "A-240 No."},
+            "route_name": {
+                "bn": "কাঁচপুর হতে টঙ্গী বাস্তহারা",
+                "en": "Kanchpur to Tongi Bastuhara"
+            },
+            "routes": [
+                {"name": {"bn": "কাঁচপুর", "en": "Kanchpur"}, "order": 0, "distance": 0},
+                {"name": {"bn": "সায়েদাবাদ", "en": "Sayedabad"}, "order": 1, "distance": 9},
+                {"name": {"bn": "মালিবাগ", "en": "Malibagh"}, "order": 2, "distance": 14.9},
+                {"name": {"bn": "নতুন বাজার", "en": "Notun Bazar"}, "order": 3, "distance": 20.8},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 4, "distance": 27.3},
+                {"name": {"bn": "টঙ্গী", "en": "Tongi"}, "order": 5, "distance": 31.4},
+                {"name": {"bn": "টঙ্গী বাস্তহারা", "en": "Tongi Bastuhara"}, "order": 6, "distance": 36}
+            ]
+        }
+    },
+    {
+        "page": 12,
+        "data": {
+            "route_code": {"bn": "এ-২৪৩নং", "en": "A-243 No."},
+            "route_name": {
+                "bn": "ধলেশ্বর হতে টঙ্গী (বাস্তহারা)",
+                "en": "Dhaleswar to Tongi (Bastuhara)"
+            },
+            "routes": [
+                {"name": {"bn": "ধলেশ্বর", "en": "Dhaleswar"}, "order": 0, "distance": 0},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 1, "distance": 4.5},
+                {"name": {"bn": "মালিবাগ", "en": "Malibagh"}, "order": 2, "distance": 10.6},
+                {"name": {"bn": "প্রগতি সরণী", "en": "Progati Sarani"}, "order": 3, "distance": 15.9},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 4, "distance": 26.6},
+                {"name": {"bn": "টঙ্গী (বাস্তহারা)", "en": "Tongi (Bastuhara)"}, "order": 5, "distance": 31.7}
+            ]
+        }
+    },
+    {
+        "page": 13,
+        "data": {
+            "route_code": {"bn": "এ-২৪৫নং", "en": "A-245 No."},
+            "route_name": {
+                "bn": "মদনপুর হতে আব্দুল্লাহপুর",
+                "en": "Madanpur to Abdullahpur"
+            },
+            "routes": [
+                {"name": {"bn": "মদনপুর", "en": "Madanpur"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মতিঝিল", "en": "Motijheel"}, "order": 1, "distance": 16.1},
+                {"name": {"bn": "মালিবাগ", "en": "Malibagh"}, "order": 2, "distance": 18.7},
+                {"name": {"bn": "মগবাজার", "en": "Magbazar"}, "order": 3, "distance": 19.9},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 4, "distance": 23.4},
+                {"name": {"bn": "কাজলী", "en": "Kajli"}, "order": 5, "distance": 25.2},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 6, "distance": 36.5}
+            ]
+        }
+    },
+    {
+        "page": 14,
+        "data": {
+            "route_code": {"bn": "এ-২৪৯নং", "en": "A-249 No."},
+            "route_name": {
+                "bn": "ফুলবাড়িয়া হতে খাসিয়াখালী বেড়িবাঁধ",
+                "en": "Fulbaria to Khasiakhali Beribadh"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "নয়াবাজার", "en": "Nayabazar"}, "order": 1, "distance": 1.4},
+                {"name": {"bn": "জিঞ্জিরা", "en": "Jinjira"}, "order": 2, "distance": 4},
+                {"name": {"bn": "কোশাইল্যা বাজার", "en": "Koshailya Bazar"}, "order": 3, "distance": 8.6},
+                {"name": {"bn": "রামের কান্দা", "en": "Ramer Kanda"}, "order": 4, "distance": 12.5},
+                {"name": {"bn": "সৈয়দপুর", "en": "Sayedpur"}, "order": 5, "distance": 16},
+                {"name": {"bn": "খারশুর", "en": "Kharshur"}, "order": 6, "distance": 23.5},
+                {"name": {"bn": "টিকরপুর", "en": "Tikarpur"}, "order": 7, "distance": 28},
+                {"name": {"bn": "আপলা বাজার", "en": "Apla Bazar"}, "order": 8, "distance": 29.2},
+                {"name": {"bn": "বঙ্গনগর", "en": "Bangonagar"}, "order": 9, "distance": 33.3},
+                {"name": {"bn": "শুরগঞ্জ", "en": "Shurganj"}, "order": 10, "distance": 34.8},
+                {"name": {"bn": "বাগমারা", "en": "Bagmara"}, "order": 11, "distance": 35.2},
+                {"name": {"bn": "নবাবগঞ্জ", "en": "Nawabganj"}, "order": 12, "distance": 36.1},
+                {"name": {"bn": "মাঝির কান্দা", "en": "Majhir Kanda"}, "order": 13, "distance": 39.4},
+                {"name": {"bn": "বান্দুরা", "en": "Bandura"}, "order": 14, "distance": 42},
+                {"name": {"bn": "বারুয়াখালী", "en": "Baruakhali"}, "order": 15, "distance": 47.8},
+                {"name": {"bn": "খাসিয়াখালী বেড়িবাঁধ", "en": "Khasiakhali Beribadh"}, "order": 16, "distance": 52.5}
+            ]
+        }
+    },
+    {
+        "page": 15,
+        "data": {
+            "route_code": {"bn": "এ-২৫২নং", "en": "A-252 No."},
+            "route_name": {
+                "bn": "ভুলতা হতে সায়েন্সল্যাব",
+                "en": "Bhulta to Science Lab"
+            },
+            "routes": [
+                {"name": {"bn": "ভুলতা", "en": "Bhulta"}, "order": 0, "distance": 0},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 1, "distance": 21.1},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 2, "distance": 24.2},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 3, "distance": 26.9},
+                {"name": {"bn": "কলাবাগান", "en": "Kalabagan"}, "order": 4, "distance": 30.4},
+                {"name": {"bn": "সাইন্সল্যাব", "en": "Science Lab"}, "order": 5, "distance": 31.3}
+            ]
+        }
+    },
+    {
+        "page": 16,
+        "data": {
+            "route_code": {"bn": "এ-২৫৬নং", "en": "A-256 No."},
+            "route_name": {
+                "bn": "চাঁনখারপুল হতে মেঘনা ঘাট",
+                "en": "Chancharpul to Meghna Ghat"
+            },
+            "routes": [
+                {"name": {"bn": "চাঁনখারপুল", "en": "Chancharpul"}, "order": 0, "distance": 0},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 1, "distance": 2},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 2, "distance": 5.4},
+                {"name": {"bn": "কাঁচপুর", "en": "Kanchpur"}, "order": 3, "distance": 14.8},
+                {"name": {"bn": "মদনপুর", "en": "Madanpur"}, "order": 4, "distance": 18},
+                {"name": {"bn": "সোনারগাঁও মোগড়া পাড়া", "en": "Sonargaon Mogra Para"}, "order": 5, "distance": 25.8},
+                {"name": {"bn": "মেঘনা ঘাট", "en": "Meghna Ghat"}, "order": 6, "distance": 29.3}
+            ]
+        }
+    },
+    {
+        "page": 17,
+        "data": {
+            "route_code": {"bn": "এ-২৫৭নং", "en": "A-257 No."},
+            "route_name": {
+                "bn": "কাঁচপুর ব্রীজ হতে বোর্ড বাজার",
+                "en": "Kanchpur Bridge to Board Bazar"
+            },
+            "routes": [
+                {"name": {"bn": "কাঁচপুর ব্রীজ", "en": "Kanchpur Bridge"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মতিঝিল", "en": "Motijheel"}, "order": 1, "distance": 13.4},
+                {"name": {"bn": "মালিবাগ", "en": "Malibagh"}, "order": 2, "distance": 16.4},
+                {"name": {"bn": "প্রগতি সরণী", "en": "Progati Sarani"}, "order": 3, "distance": 22.4},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 4, "distance": 29.5},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 5, "distance": 33.1},
+                {"name": {"bn": "বোর্ড বাজার", "en": "Board Bazar"}, "order": 6, "distance": 40.9}
+            ]
+        }
+    },
+    {
+        "page": 18,
+        "data": {
+            "route_code": {"bn": "এ-২৫৯নং", "en": "A-259 No."},
+            "route_name": {
+                "bn": "পলাশী হতে মেঘনাঘাট",
+                "en": "Palashi to Meghnaghat"
+            },
+            "routes": [
+                {"name": {"bn": "পলাশী", "en": "Palashi"}, "order": 0, "distance": 0},
+                {"name": {"bn": "ইডেন কলেজ", "en": "Eden College"}, "order": 1, "distance": 0.9},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 2, "distance": 3.4},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 3, "distance": 6.1},
+                {"name": {"bn": "যাত্রাবাড়ী", "en": "Jatrabari"}, "order": 4, "distance": 9.4},
+                {"name": {"bn": "শনিরআখড়া", "en": "Shanir Akhra"}, "order": 5, "distance": 11},
+                {"name": {"bn": "মেঘনাঘাট", "en": "Meghnaghat"}, "order": 6, "distance": 33.4}
+            ]
+        }
+    },
+    {
+        "page": 19,
+        "data": {
+            "route_code": {"bn": "এ-২৬০নং", "en": "A-260 No."},
+            "route_name": {
+                "bn": "ফুলবাড়ীয়া পথ হাসপাতাল হতে ধামরাই",
+                "en": "Fulbaria Path Hospital to Dhamrai"
+            },
+            "routes": [
+                {"name": {"bn": "ফুলবাড়ীয়া", "en": "Fulbaria"}, "order": 0, "distance": 0},
+                {"name": {"bn": "চানখারপুল", "en": "Chancharpul"}, "order": 1, "distance": 1.5},
+                {"name": {"bn": "আজিমপুর", "en": "Azimpur"}, "order": 2, "distance": 5.1},
+                {"name": {"bn": "আসাদগেট", "en": "Asad Gate"}, "order": 3, "distance": 8},
+                {"name": {"bn": "টেকনিক্যাল", "en": "Technical"}, "order": 4, "distance": 11},
+                {"name": {"bn": "গাবতলী", "en": "Gabtoli"}, "order": 5, "distance": 12},
+                {"name": {"bn": "ধামরাই", "en": "Dhamrai"}, "order": 6, "distance": 42}
+            ]
+        }
+    },
+    {
+        "page": 20,
+        "data": {
+            "route_code": {"bn": "এ-২৬৪নং", "en": "A-264 No."},
+            "route_name": {
+                "bn": "মিরপুর (চিড়িয়াখানা) হতে কেরানীগঞ্জ",
+                "en": "Mirpur (Zoo) to Keraniganj"
+            },
+            "routes": [
+                {"name": {"bn": "মিরপুর (চিড়িয়াখানা)", "en": "Mirpur (Zoo)"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 1, "distance": 1.8},
+                {"name": {"bn": "আনসারক্যাম্প", "en": "Ansar Camp"}, "order": 2, "distance": 2.7},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 3, "distance": 9},
+                {"name": {"bn": "গোলাপশাহ মাজার (ফুলবাড়ীয়া)", "en": "Golapshah Mazar (Fulbaria)"}, "order": 4, "distance": 14.2},
+                {"name": {"bn": "নয়াবাজার (২নং বুড়িগঙ্গা সেতু)", "en": "Nayabazar (No. 2 Buriganga Bridge)"}, "order": 5, "distance": 15.7},
+                {"name": {"bn": "কেরানীগঞ্জ", "en": "Keraniganj"}, "order": 6, "distance": 17.2}
+            ]
+        }
+    },
+    {
+        "page": 21,
+        "data": {
+            "route_code": {"bn": "এ-২৭০নং", "en": "A-270 No."},
+            "route_name": {
+                "bn": "বসিলা হতে কামারপাড়া",
+                "en": "Basila to Kamarpada"
+            },
+            "routes": [
+                {"name": {"bn": "বসিলা", "en": "Basila"}, "order": 0, "distance": 0},
+                {"name": {"bn": "আসাদ এভিনিউ", "en": "Asad Avenue"}, "order": 1, "distance": 3},
+                {"name": {"bn": "শ্যামলী", "en": "Shyamoli"}, "order": 2, "distance": 4.8},
+                {"name": {"bn": "কল্যাণপুর", "en": "Kalyanpur"}, "order": 3, "distance": 5.13},
+                {"name": {"bn": "টেকনিক্যাল", "en": "Technical"}, "order": 4, "distance": 6.05},
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 5, "distance": 8.5},
+                {"name": {"bn": "মিরপুর-২", "en": "Mirpur-2"}, "order": 6, "distance": 9.8},
+                {"name": {"bn": "মিরপুর-১০", "en": "Mirpur-10"}, "order": 7, "distance": 10.3},
+                {"name": {"bn": "মিরপুর-১১", "en": "Mirpur-11"}, "order": 8, "distance": 11.3},
+                {"name": {"bn": "পূরবী", "en": "Purabi"}, "order": 9, "distance": 11.8},
+                {"name": {"bn": "কাশী", "en": "Kashi"}, "order": 10, "distance": 15},
+                {"name": {"bn": "শেওড়া বাজার", "en": "Sheora Bazar"}, "order": 11, "distance": 19.4},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 12, "distance": 23.4},
+                {"name": {"bn": "জসমউদ্দিন", "en": "Jasimuddin"}, "order": 13, "distance": 24.6},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 14, "distance": 27.1},
+                {"name": {"bn": "কামারপাড়া", "en": "Kamarpada"}, "order": 15, "distance": 29.2}
+            ]
+        }
+    },
+    {
+        "page": 22,
+        "data": {
+            "route_code": {"bn": "এ-২৭১নং", "en": "A-271 No."},
+            "route_name": {
+                "bn": "গাবতলী হতে গাজীপুর",
+                "en": "Gabtoli to Gazipur"
+            },
+            "routes": [
+                {"name": {"bn": "গাবতলী ব্রীজ পাড়", "en": "Gabtoli Bridge Par"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 1, "distance": 2},
+                {"name": {"bn": "মিরপুর-২", "en": "Mirpur-2"}, "order": 2, "distance": 3.8},
+                {"name": {"bn": "মিরপুর-১০", "en": "Mirpur-10"}, "order": 3, "distance": 4.8},
+                {"name": {"bn": "কালশীর মোড়", "en": "Kalshir Mor"}, "order": 4, "distance": 9.5},
+                {"name": {"bn": "খিলক্ষেত", "en": "Khilkhet"}, "order": 5, "distance": 15},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 6, "distance": 18},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 7, "distance": 21.7},
+                {"name": {"bn": "গাজীপুর", "en": "Gazipur"}, "order": 8, "distance": 36.7}
+            ]
+        }
+    },
+    {
+        "page": 23,
+        "data": {
+            "route_code": {"bn": "এ-২৭৮নং", "en": "A-278 No."},
+            "route_name": {
+                "bn": "মিরপুর-১ (সনি সিনেমা হল) হতে বেরাইদ",
+                "en": "Mirpur-1 (Sony Cinema Hall) to Beraid"
+            },
+            "routes": [
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-২", "en": "Mirpur-2"}, "order": 1, "distance": 1.3},
+                {"name": {"bn": "কচুক্ষেত", "en": "Kochukshet"}, "order": 2, "distance": 6},
+                {"name": {"bn": "সৈনিক ক্লাব", "en": "Sainik Club"}, "order": 3, "distance": 7.2},
+                {"name": {"bn": "বনানী", "en": "Banani"}, "order": 4, "distance": 8},
+                {"name": {"bn": "মহাখালী আমতলী", "en": "Mohakhali Amtali"}, "order": 5, "distance": 10.5},
+                {"name": {"bn": "গুলশান-১", "en": "Gulshan-1"}, "order": 6, "distance": 12.2},
+                {"name": {"bn": "বাড্ডা লিংক রোড", "en": "Badda Link Road"}, "order": 7, "distance": 13.7},
+                {"name": {"bn": "নতুন বাজার", "en": "Notun Bazar"}, "order": 8, "distance": 15},
+                {"name": {"bn": "বেরাইদ", "en": "Beraid"}, "order": 9, "distance": 21}
+            ]
+        }
+    },
+    {
+        "page": 24,
+        "data": {
+            "route_code": {"bn": "এ-২৮০নং", "en": "A-280 No."},
+            "route_name": {
+                "bn": "মিরপুর ডিওএইচ এস হতে মতিঝিল",
+                "en": "Mirpur DOHS to Motijheel"
+            },
+            "routes": [
+                {"name": {"bn": "মিরপুর ডিওএইচ এস", "en": "Mirpur DOHS"}, "order": 0, "distance": 0},
+                {"name": {"bn": "কালাশি মোড়", "en": "Kalashi Mor"}, "order": 1, "distance": 3},
+                {"name": {"bn": "ইসিবি চত্বর", "en": "ECB Chattar"}, "order": 2, "distance": 4},
+                {"name": {"bn": "ক্যান্টনমেন্ট সিগন্যাল গেট", "en": "Cantonment Signal Gate"}, "order": 3, "distance": 6},
+                {"name": {"bn": "ওয়ার্ক সপ", "en": "Work Shop"}, "order": 4, "distance": 8},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 5, "distance": 12},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 6, "distance": 14.3},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 7, "distance": 17.1},
+                {"name": {"bn": "মতিঝিল", "en": "Motijheel"}, "order": 8, "distance": 18.9}
+            ]
+        }
+    },
+    {
+        "page": 25,
+        "data": {
+            "route_code": {"bn": "এ-২৮৫নং", "en": "A-285 No."},
+            "route_name": {
+                "bn": "চিড়িয়াখানা হতে কেরানীগঞ্জ (নতুন জেলখানা)",
+                "en": "Zoo to Keraniganj (New Jail)"
+            },
+            "routes": [
+                {"name": {"bn": "চিড়িয়াখানা", "en": "Zoo"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-১", "en": "Mirpur-1"}, "order": 1, "distance": 1.8},
+                {"name": {"bn": "টেকনিক্যাল", "en": "Technical"}, "order": 2, "distance": 2.7},
+                {"name": {"bn": "শ্যামলী", "en": "Shyamoli"}, "order": 3, "distance": 5.4},
+                {"name": {"bn": "আসাদগেট", "en": "Asad Gate"}, "order": 4, "distance": 7.2},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 5, "distance": 9},
+                {"name": {"bn": "প্রেসক্লাব", "en": "Press Club"}, "order": 6, "distance": 12.6},
+                {"name": {"bn": "ফুলবাড়িয়া", "en": "Fulbaria"}, "order": 7, "distance": 14.2},
+                {"name": {"bn": "আতি বাজার", "en": "Ati Bazar"}, "order": 8, "distance": 15.7},
+                {"name": {"bn": "বাবু বাজার ব্রীজ", "en": "Babu Bazar Bridge"}, "order": 9, "distance": 16.9},
+                {"name": {"bn": "চুন কুটিয়া", "en": "Chun Kutia"}, "order": 10, "distance": 18},
+                {"name": {"bn": "কেরানীগঞ্জ (নতুন জেল খানা)", "en": "Keraniganj (New Jail)"}, "order": 11, "distance": 21}
+            ]
+        }
+    },
+    {
+        "page": 26,
+        "data": {
+            "route_code": {"bn": "এ-২৮৮নং", "en": "A-288 No."},
+            "route_name": {
+                "bn": "মিরপুর-১২ হতে নারায়ণগঞ্জ",
+                "en": "Mirpur-12 to Narayanganj"
+            },
+            "routes": [
+                {"name": {"bn": "মিরপুর-১২", "en": "Mirpur-12"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-১১", "en": "Mirpur-11"}, "order": 1, "distance": 1.5},
+                {"name": {"bn": "মিরপুর-১০", "en": "Mirpur-10"}, "order": 2, "distance": 2.5},
+                {"name": {"bn": "কাজীপাড়া", "en": "Kazipara"}, "order": 3, "distance": 4.5},
+                {"name": {"bn": "শেওড়াপাড়া", "en": "Sheorapara"}, "order": 4, "distance": 5},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 5, "distance": 9},
+                {"name": {"bn": "শাহবাগ", "en": "Shahbag"}, "order": 6, "distance": 11.3},
+                {"name": {"bn": "জিপিও", "en": "GPO"}, "order": 7, "distance": 14.5},
+                {"name": {"bn": "মেয়র মোহাম্মদ হানিফ ফ্লাইওভার", "en": "Mayor Mohammad Hanif Flyover"}, "order": 8, "distance": 16},
+                {"name": {"bn": "শনির আখড়া", "en": "Shanir Akhra"}, "order": 9, "distance": 22},
+                {"name": {"bn": "সাইনবোর্ড", "en": "Signboard"}, "order": 10, "distance": 25.3},
+                {"name": {"bn": "চাষাঢ়া বাসস্ট্যান্ড", "en": "Chasara Bus Stand"}, "order": 11, "distance": 33.2},
+                {"name": {"bn": "নারায়ণগঞ্জ", "en": "Narayanganj"}, "order": 12, "distance": 35}
+            ]
+        }
+    },
+    {
+        "page": 27,
+        "data": {
+            "route_code": {"bn": "এ-২৯২নং", "en": "A-292 No."},
+            "route_name": {
+                "bn": "মোহাম্মদপুর শিয়া মসজিদ হতে নবীনগর (সাভার)",
+                "en": "Mohammadpur Shia Mosque to Nobinagar (Savar)"
+            },
+            "routes": [
+                {"name": {"bn": "মোহাম্মদপুর শিয়া মসজিদ", "en": "Mohammadpur Shia Mosque"}, "order": 0, "distance": 0},
+                {"name": {"bn": "শ্যামলী", "en": "Shyamoli"}, "order": 1, "distance": 1.5},
+                {"name": {"bn": "শিশুমেলা", "en": "Shishumela"}, "order": 2, "distance": 2},
+                {"name": {"bn": "আগারগাঁও", "en": "Agargaon"}, "order": 3, "distance": 4.1},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 4, "distance": 8},
+                {"name": {"bn": "বনানী", "en": "Banani"}, "order": 5, "distance": 9.8},
+                {"name": {"bn": "বিমানবন্দর", "en": "Airport"}, "order": 6, "distance": 17.3},
+                {"name": {"bn": "উত্তরা", "en": "Uttara"}, "order": 7, "distance": 19.5},
+                {"name": {"bn": "আব্দুল্লাহপুর", "en": "Abdullahpur"}, "order": 8, "distance": 20.8},
+                {"name": {"bn": "ধউর", "en": "Dhaur"}, "order": 9, "distance": 25.2},
+                {"name": {"bn": "আশুলিয়া", "en": "Ashulia"}, "order": 10, "distance": 28.4},
+                {"name": {"bn": "নবীনগর (সাভার)", "en": "Nobinagar (Savar)"}, "order": 11, "distance": 40}
+            ]
+        }
+    },
+    {
+        "page": 28,
+        "data": {
+            "route_code": {"bn": "এ-২৯৪নং", "en": "A-294 No."},
+            "route_name": {
+                "bn": "জাপান গার্ডেন সিটি হতে ধউর",
+                "en": "Japan Garden City to Dhaur"
+            },
+            "routes": [
+                {"name": {"bn": "জাপান গার্ডেন সিটি", "en": "Japan Garden City"}, "order": 0, "distance": 0},
+                {"name": {"bn": "শ্যামলী", "en": "Shyamoli"}, "order": 1, "distance": 1.5},
+                {"name": {"bn": "আগারগাঁও", "en": "Agargaon"}, "order": 2, "distance": 4.1},
+                {"name": {"bn": "মহাখালী", "en": "Mohakhali"}, "order": 3, "distance": 8},
+                {"name": {"bn": "কাজলী", "en": "Kajli"}, "order": 4, "distance": 9.8},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 5, "distance": 17.3},
+                {"name": {"bn": "উত্তরা", "en": "Uttara"}, "order": 6, "distance": 19.5},
+                {"name": {"bn": "ধউর", "en": "Dhaur"}, "order": 7, "distance": 25.2}
+            ]
+        }
+    },
+    {
+        "page": 29,
+        "data": {
+            "route_code": {"bn": "এ-২৯৫নং", "en": "A-295 No."},
+            "route_name": {
+                "bn": "মিরপুর-১২ হতে মাওয়া",
+                "en": "Mirpur-12 to Mawa"
+            },
+            "routes": [
+                {"name": {"bn": "মিরপুর-১২", "en": "Mirpur-12"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মিরপুর-১০", "en": "Mirpur-10"}, "order": 1, "distance": 3},
+                {"name": {"bn": "বিজয় স্মরণী", "en": "Bijoy Smriti"}, "order": 2, "distance": 9.4},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 3, "distance": 9.9},
+                {"name": {"bn": "গুলিস্তান", "en": "Gulistan"}, "order": 4, "distance": 15},
+                {"name": {"bn": "বাবু বাজার ব্রীজ", "en": "Babu Bazar Bridge"}, "order": 5, "distance": 18},
+                {"name": {"bn": "মাওয়া ফেরীঘাট", "en": "Mawa Ferryghat"}, "order": 6, "distance": 53}
+            ]
+        }
+    },
+    {
+        "page": 30,
+        "data": {
+            "route_code": {"bn": "এ-২৯৯নং", "en": "A-299 No."},
+            "route_name": {
+                "bn": "আটি বাজার হতে ধউর",
+                "en": "Ati Bazar to Dhaur"
+            },
+            "routes": [
+                {"name": {"bn": "আটিবাজার", "en": "Ati Bazar"}, "order": 0, "distance": 0},
+                {"name": {"bn": "মোহাম্মদপুর", "en": "Mohammadpur"}, "order": 1, "distance": 5},
+                {"name": {"bn": "ফার্মগেট", "en": "Farmgate"}, "order": 2, "distance": 8},
+                {"name": {"bn": "কাজলী", "en": "Kajli"}, "order": 3, "distance": 13},
+                {"name": {"bn": "এয়ারপোর্ট", "en": "Airport"}, "order": 4, "distance": 20},
+                {"name": {"bn": "উত্তরা", "en": "Uttara"}, "order": 5, "distance": 23},
+                {"name": {"bn": "ধউর", "en": "Dhaur"}, "order": 6, "distance": 29}
+            ]
+        }
+    }
+]

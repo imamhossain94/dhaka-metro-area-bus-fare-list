@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhaka Metro Bus Fare Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .triangular-table {
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .triangular-table th,
+        .triangular-table td {
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .triangular-table th {
+            font-weight: 600;
+            background-color: var(--bg-modifier);
+            color: var(--text-base);
+        }
+
+        .triangular-table .empty-cell {
+            border: none;
+            background: transparent;
+        }
+
+        .triangular-table .station-name {
+            background-color: var(--bg-modifier);
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .route-path {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .route-stop {
+            display: inline-flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading-overlay" class="hidden"><span class="loader"></span></div>
+
+    <div id="layout">
+        <!-- Sidebar -->
+        <aside>
+            <div class="brand">
+                <div class="brand-wrapper">
+                    <div class="brand-icon-container">
+                        <i data-lucide="bus" class="brand-icon"></i>
+                    </div>
+                    <h1>Bus Fare Calculator</h1>
+                </div>
+                <div style="display: flex; gap: 0.5rem">
+                    <button id="settings-btn" class="theme-toggle" title="Settings"><i
+                            data-lucide="settings"></i></button>
+                    <button id="theme-btn" class="theme-toggle" title="Toggle Theme"><i data-lucide="moon"
+                            id="theme-icon"></i></button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <!-- Language selection -->
+                <div class="filter-group">
+                    <label id="lbl-lang">Language / ভাষা</label>
+                    <div class="range-grid">
+                        <button class="nav-btn active lang-btn" data-lang="en">EN</button>
+                        <button class="nav-btn lang-btn" data-lang="bn">বাংলা</button>
+                    </div>
+                </div>
+                <div class="filter-divider"></div>
+
+                <!-- Fare Calculator Form -->
+                <div class="filter-group">
+                    <label id="lbl-route">Route (Optional)</label>
+                    <select id="route-select">
+                        <option value="">All Routes</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label id="lbl-from">Select From</label>
+                    <select id="from-select">
+                        <option value="">Select Starting Location</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label id="lbl-to">Select To</label>
+                    <select id="to-select">
+                        <option value="">Select Destination</option>
+                    </select>
+                </div>
+
+                <div class="filter-group" style="margin-top: 1.5rem">
+                    <button id="calculate-btn" class="nav-btn"
+                        style="width: 100%; justify-content: center; background: var(--primary); color: white; border-color: var(--primary); font-size: 1rem; padding: 0.8rem;">
+                        <span id="lbl-calc-btn">Calculate Fare</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <nav class="nav-links">
+                    <button class="nav-btn active" data-view="grid-view">
+                        <i data-lucide="calculator" class="nav-icon"></i>
+                        <span id="nav-calc">Calculator</span>
+                    </button>
+                    <button class="nav-btn" data-view="tree-view">
+                        <i data-lucide="table" class="nav-icon"></i>
+                        <span id="nav-chart">Fare Chart</span>
+                    </button>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main>
+            <header class="main-header">
+                <h2 id="main-title">Fare Results</h2>
+                <p id="result-count">Select locations to calculate fare</p>
+            </header>
+
+            <div class="content-body">
+                <!-- Grid View for Results -->
+                <section id="grid-view" class="view-content">
+                    <div id="results-grid" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+                </section>
+
+                <!-- Tree/Chart View -->
+                <section id="tree-view" class="view-content hidden">
+                    <div class="filter-group" style="max-width: 300px; margin-bottom: 1rem;">
+                        <label id="lbl-chart-route">Select Route for Chart</label>
+                        <select id="chart-route-select">
+                        </select>
+                    </div>
+                    <div id="chart-container" style="overflow-x: auto; padding-bottom: 2rem;">
+                        <!-- Triangular table will be rendered here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 400px;">
+            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:2rem;">
+                <div>
+                    <h2 id="modal-title" style="font-size:1.5rem; margin-top:0.5rem;"><i data-lucide="settings"
+                            style="display:inline-block; vertical-align:middle; margin-right:8px;"></i> Configuration
+                    </h2>
+                </div>
+                <button id="close-settings" class="close-modal-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="filter-group" style="margin-bottom: 1rem;">
+                <label id="lbl-min-fare">Minimum Fare (Tk)</label>
+                <input type="number" id="min-fare-input" value="10" step="1">
+            </div>
+            <div class="filter-group" style="margin-bottom: 2rem;">
+                <label id="lbl-fare-km">Fare per KM (Tk)</label>
+                <input type="number" id="fare-km-input" value="2.45" step="0.01">
+            </div>
+            <button id="save-settings-btn" class="nav-btn"
+                style="width: 100%; justify-content: center; background: var(--primary); color: white; border-color: var(--primary);"><span
+                    id="lbl-save-settings">Save Settings</span></button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
