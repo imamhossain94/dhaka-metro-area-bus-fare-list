@@ -147,10 +147,20 @@
 
                 <!-- Tree/Chart View -->
                 <section id="tree-view" class="view-content hidden">
-                    <div class="filter-group" style="max-width: 300px; margin-bottom: 1rem;">
+                    <div class="filter-group" style="max-width: 350px; margin-bottom: 1rem;">
                         <label id="lbl-chart-route">Select Route for Chart</label>
-                        <select id="chart-route-select">
-                        </select>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <select id="chart-route-select" style="flex: 1;">
+                            </select>
+                            <button id="chart-prev-btn" class="nav-btn"
+                                style="padding: 0.4rem; justify-content: center;" title="Previous Route">
+                                <i data-lucide="chevron-left" style="width: 20px; height: 20px;"></i>
+                            </button>
+                            <button id="chart-next-btn" class="nav-btn"
+                                style="padding: 0.4rem; justify-content: center;" title="Next Route">
+                                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
+                            </button>
+                        </div>
                     </div>
                     <div id="chart-container" style="overflow-x: auto; padding-bottom: 2rem;">
                         <!-- Triangular table will be rendered here -->

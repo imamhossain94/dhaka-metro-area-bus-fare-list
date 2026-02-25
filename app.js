@@ -204,6 +204,26 @@ function initUI() {
     // Route Selection for Chart
     document.getElementById('chart-route-select').onchange = renderChart;
 
+    document.getElementById('chart-prev-btn').onclick = () => {
+        const select = document.getElementById('chart-route-select');
+        if (select.selectedIndex > 1) { // 0 is the "-- All Routes --" option usually, we might want to skip it or allow it
+            select.selectedIndex -= 1;
+            renderChart();
+        } else if (select.selectedIndex === 1) { // Skip empty option
+            // Optional: loop to end
+            // select.selectedIndex = select.options.length - 1;
+            // renderChart();
+        }
+    };
+
+    document.getElementById('chart-next-btn').onclick = () => {
+        const select = document.getElementById('chart-route-select');
+        if (select.selectedIndex < select.options.length - 1) {
+            select.selectedIndex += 1;
+            renderChart();
+        }
+    };
+
     // Filter Dependency
     document.getElementById('route-select').onchange = () => populateDropdowns(false);
 }
@@ -262,23 +282,33 @@ function populateDropdowns(fullRefresh = true) {
     let validPlaces = new Set();
     const activeRouteId = document.getElementById('route-select').value;
 
+    // Track added places to avoid duplicate options in circular routes
+    let addedPlaces = new Set();
+
     if (activeRouteId) {
         const r = busData.routes.find(x => x.code.en === activeRouteId);
         if (r) {
-            r.stops.forEach(s => validPlaces.add(s.name.en.trim().toLowerCase()));
+            r.stops.forEach(s => {
+                const val = s.name.en.trim().toLowerCase();
+                if (!addedPlaces.has(val)) {
+                    addedPlaces.add(val);
+                    const label = s.name[currentLang];
+                    fromSelect.add(new Option(label, val));
+                    toSelect.add(new Option(label, val));
+                }
+            });
         }
     } else {
-        busData.places.forEach(p => validPlaces.add(p.en.trim().toLowerCase()));
+        busData.places.forEach(p => {
+            const val = p.en.trim().toLowerCase();
+            if (!addedPlaces.has(val)) {
+                addedPlaces.add(val);
+                const label = p[currentLang] || p.en;
+                fromSelect.add(new Option(label, val));
+                toSelect.add(new Option(label, val));
+            }
+        });
     }
-
-    busData.places.forEach(p => {
-        const val = p.en.trim().toLowerCase();
-        if (validPlaces.has(val)) {
-            const label = p[currentLang] || p.en;
-            fromSelect.add(new Option(label, val));
-            toSelect.add(new Option(label, val));
-        }
-    });
 
     // Restore selections
     if (fromSelect.querySelector(`option[value="${currentFrom}"]`)) fromSelect.value = currentFrom;
@@ -384,6 +414,14 @@ function calculateFare() {
 }
 
 // --- TREE VIEW (Triangular Chart) ---
+let chartSelectionStart = null;
+let chartSelectionEnd = null;
+let isSelectingChart = false;
+
+window.addEventListener('mouseup', () => {
+    isSelectingChart = false;
+});
+
 function renderChart() {
     if (currentView !== 'tree-view') return;
 
@@ -391,6 +429,10 @@ function renderChart() {
     const container = document.getElementById('chart-container');
     const t = translations[currentLang];
     container.innerHTML = '';
+
+    // Reset selection state when rendering new chart
+    chartSelectionStart = null;
+    chartSelectionEnd = null;
 
     if (!routeVal) {
         container.innerHTML = `<div style="text-align:center; color:var(--text-gray); margin-top: 2rem;">${t['chart-empty']}</div>`;
@@ -403,37 +445,111 @@ function renderChart() {
     const stops = r.stops;
     const n = stops.length;
 
+    // Apply some required responsive container styles if not already set via CSS
+    container.style.overflow = 'auto';
+    container.style.maxWidth = '100%';
+    container.style.maxHeight = 'calc(100vh - 220px)';
+    container.style.position = 'relative';
+
     const table = document.createElement('table');
     table.className = 'triangular-table';
+    table.style.borderCollapse = 'collapse'; // keep tight for selection edges
 
-    // Header for distance? The image shows "কিঃমিঃ" at the top
+    // Add styles dynamically for selection and stickiness
+    if (!document.getElementById('chart-dynamic-styles')) {
+        const style = document.createElement('style');
+        style.id = 'chart-dynamic-styles';
+        style.innerHTML = `
+            .triangular-table th, .triangular-table td {
+                transition: background-color 0.1s;
+                white-space: nowrap !important;
+            }
+            .triangular-table .fare-cell {
+                cursor: pointer;
+                user-select: none;
+            }
+            .triangular-table .fare-cell:hover {
+                background-color: rgba(79, 70, 229, 0.15) !important;
+            }
+            .triangular-table .fare-cell.selected {
+                background-color: rgba(79, 70, 229, 0.3) !important;
+                border-color: rgba(79, 70, 229, 0.5) !important;
+            }
+            .sticky-col-1 {
+                position: sticky !important;
+                left: 0;
+                background-color: var(--bg-modifier) !important;
+                border-right: 2px solid var(--border);
+                z-index: 2;
+            }
+            .sticky-col-2 {
+                position: sticky !important;
+                background-color: var(--bg-modifier) !important;
+                border-right: 2px solid var(--border);
+                z-index: 2;
+            }
+            thead .sticky-col-1, thead .sticky-col-2 {
+                z-index: 4 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Header: Only keep km, hide others (but create them empty to keep table structure)
     const thead = document.createElement('thead');
-    let tr = document.createElement('tr');
-    tr.innerHTML = `<th></th><th>${t['km']}</th>`;
+    let trHead = document.createElement('tr');
+    trHead.innerHTML = `
+        <th class="sticky-col-1" style="top: 0; z-index: 4; background-color: var(--bg-modifier); position: sticky;"></th>
+        <th class="sticky-col-2" style="top: 0; z-index: 4; background-color: var(--bg-modifier); position: sticky;">${t['km']}</th>
+    `;
     for (let i = 0; i < n; i++) {
         const th = document.createElement('th');
-        th.style.writingMode = 'vertical-rl';
-        th.style.transform = 'rotate(180deg)';
-        th.style.whiteSpace = 'nowrap';
-        th.style.paddingTop = '10px';
-        th.innerText = stops[i].name[currentLang];
-        tr.appendChild(th);
+        // Hidden text, but retains cell structure
+        th.style.padding = '0';
+        th.style.minWidth = '60px';
+        th.style.border = 'none';
+        trHead.appendChild(th);
     }
-    thead.appendChild(tr);
+    thead.appendChild(trHead);
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
+    const updateSelectionUI = () => {
+        if (!chartSelectionStart || !chartSelectionEnd) return;
+
+        // Bounding box logic: Highlight entire rows and columns that fall within the selection block
+        const minR = Math.min(chartSelectionStart.row, chartSelectionEnd.row);
+        const maxR = Math.max(chartSelectionStart.row, chartSelectionEnd.row);
+        const minC = Math.min(chartSelectionStart.col, chartSelectionEnd.col);
+        const maxC = Math.max(chartSelectionStart.col, chartSelectionEnd.col);
+
+        const cells = tbody.querySelectorAll('.fare-cell');
+        cells.forEach(c => {
+            const r = parseInt(c.dataset.row);
+            const col = parseInt(c.dataset.col);
+            // Highlight if the cell's row is within the selected rows OR if its column is within the selected columns
+            if ((r >= minR && r <= maxR) || (col >= minC && col <= maxC)) {
+                c.classList.add('selected');
+            } else {
+                c.classList.remove('selected');
+            }
+        });
+    };
+
     for (let row = 0; row < n; row++) {
         let tr = document.createElement('tr');
 
         // Col 1: Name
-        let thName = document.createElement('th');
-        thName.className = 'station-name';
+        let thName = document.createElement('td'); // Use td to keep styling simpler if needed
+        thName.className = 'station-name sticky-col-1';
+        thName.style.backgroundColor = 'var(--bg-modifier)'; // Ensure bg covers scroll
         thName.innerText = stops[row].name[currentLang];
         tr.appendChild(thName);
 
         // Col 2: Distance
         let tdDist = document.createElement('td');
+        tdDist.className = 'sticky-col-2';
+        tdDist.style.backgroundColor = 'var(--bg-modifier)';
         tdDist.innerText = stops[row].distance.toFixed(1);
         tr.appendChild(tdDist);
 
@@ -441,14 +557,30 @@ function renderChart() {
         for (let col = 0; col < n; col++) {
             let td = document.createElement('td');
             if (col < row) {
-                // Diagonal mirror or empty. The example image is a lower-triangular matrix but here we do upper or lower
-                // In the image, right of the diagonal is empty, left of the diagonal shows fare
                 const dist = Math.abs(stops[row].distance - stops[col].distance);
                 td.innerText = calculateExactFare(dist);
+                td.className = 'fare-cell';
+                td.dataset.row = row;
+                td.dataset.col = col;
+
+                td.addEventListener('mousedown', (e) => {
+                    isSelectingChart = true;
+                    chartSelectionStart = { row, col };
+                    chartSelectionEnd = { row, col };
+                    tbody.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+                    updateSelectionUI();
+                });
+                td.addEventListener('mouseenter', (e) => {
+                    if (isSelectingChart) {
+                        chartSelectionEnd = { row, col };
+                        updateSelectionUI();
+                    }
+                });
             } else if (col === row) {
-                td.innerText = stops[row].name[currentLang]; // Some names are shown in diagonal
+                td.innerText = stops[row].name[currentLang];
                 td.className = 'station-name';
                 td.style.fontWeight = 'bold';
+                // Rotate name dynamically to look nice diagonally if requested, but keep simple for now
             } else {
                 td.className = 'empty-cell';
             }
@@ -459,6 +591,15 @@ function renderChart() {
 
     table.appendChild(tbody);
     container.appendChild(table);
+
+    // Sync column 2 sticky offset after rendering
+    setTimeout(() => {
+        const col1Width = table.querySelector('.sticky-col-1').offsetWidth;
+        const allCol2 = table.querySelectorAll('.sticky-col-2');
+        allCol2.forEach(c => {
+            c.style.left = col1Width + 'px';
+        });
+    }, 0);
 }
 
 function toggleLoader(show) { document.getElementById('loading-overlay').classList.toggle('hidden', !show); }

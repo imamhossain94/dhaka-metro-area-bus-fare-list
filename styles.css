@@ -11,6 +11,7 @@
     --text-gray: #94a3b8;
     --border: rgba(255, 255, 255, 0.12);
     --input-bg: rgba(255, 255, 255, 0.03);
+    --bg-modifier: var(--bg-sidebar);
 
     --sidebar-width: 320px;
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,6 +25,7 @@
     --text-gray: #64748b;
     --border: rgba(0, 0, 0, 0.1);
     --input-bg: rgba(0, 0, 0, 0.02);
+    --bg-modifier: var(--bg-sidebar);
 }
 
 * {
@@ -276,6 +278,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    min-width: 0;
 }
 
 .main-header {
@@ -298,6 +301,7 @@ main {
     flex: 1;
     overflow-y: auto;
     padding: 2rem 2.5rem;
+    min-width: 0;
 }
 
 /* Card Grid (No Shadow) */
@@ -560,6 +564,7 @@ tr:hover td {
 
 ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
