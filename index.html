@@ -3,121 +3,174 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhaka Metro Bus Fare Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Dhaka Metro Bus Fare Calculator & Fare Chart</title>
+    <meta name="description" content="Calculate Dhaka metro area bus fare according to official BRTA rates. Features interactive triangular fare charts, student pass rates, and complete route directory.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .triangular-table {
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .triangular-table th,
-        .triangular-table td {
-            border: 1px solid var(--border-color);
-            padding: 8px 12px;
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .triangular-table th {
-            font-weight: 600;
-            background-color: var(--bg-modifier);
-            color: var(--text-base);
-        }
-
-        .triangular-table .empty-cell {
-            border: none;
-            background: transparent;
-        }
-
-        .triangular-table .station-name {
-            background-color: var(--bg-modifier);
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .route-path {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .route-stop {
-            display: inline-flex;
-            align-items: center;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="loading-overlay" class="hidden"><span class="loader"></span></div>
+    <!-- Toast notification -->
+    <div id="toast" class="toast hidden">
+        <i data-lucide="check" class="toast-icon"></i>
+        <span id="toast-message">Copied to clipboard</span>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loader-container">
+            <span class="loader"></span>
+            <p id="loading-text" class="loading-text">Loading Dhaka bus routes data...</p>
+        </div>
+    </div>
+
+    <!-- Mobile Top Navigation Bar -->
+    <header class="mobile-top-bar">
+        <div class="brand-mobile">
+            <div class="brand-icon-container">
+                <i data-lucide="bus" class="brand-icon"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">Dhaka Bus Fare</span>
+                <span class="brand-subtitle">BRTA Approved</span>
+            </div>
+        </div>
+        <div class="mobile-top-actions">
+            <div class="lang-switch-mini">
+                <button class="mini-lang-btn lang-btn active" data-lang="en">EN</button>
+                <button class="mini-lang-btn lang-btn" data-lang="bn">বাং</button>
+            </div>
+            <button id="theme-btn-mobile" class="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                <i data-lucide="moon" class="theme-icon"></i>
+            </button>
+            <button id="settings-btn-mobile" class="theme-toggle" title="Settings" aria-label="Settings">
+                <i data-lucide="settings"></i>
+            </button>
+        </div>
+    </header>
 
     <div id="layout">
-        <!-- Sidebar -->
-        <aside>
+        <!-- Sidebar (Desktop & Tablet) -->
+        <aside id="sidebar">
             <div class="brand">
                 <div class="brand-wrapper">
                     <div class="brand-icon-container">
                         <i data-lucide="bus" class="brand-icon"></i>
                     </div>
-                    <h1>Bus Fare Calculator</h1>
-                </div>
-                <div style="display: flex; gap: 0.5rem">
-                    <button id="settings-btn" class="theme-toggle" title="Settings"><i
-                            data-lucide="settings"></i></button>
-                    <button id="theme-btn" class="theme-toggle" title="Toggle Theme"><i data-lucide="moon"
-                            id="theme-icon"></i></button>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <!-- Language selection -->
-                <div class="filter-group">
-                    <label id="lbl-lang">Language / ভাষা</label>
-                    <div class="range-grid">
-                        <button class="nav-btn active lang-btn" data-lang="en">EN</button>
-                        <button class="nav-btn lang-btn" data-lang="bn">বাংলা</button>
+                    <div>
+                        <h1>Bus Fare Calculator</h1>
+                        <span class="sub-brand">Dhaka Metro BRTA</span>
                     </div>
                 </div>
-                <div class="filter-divider"></div>
-
-                <!-- Fare Calculator Form -->
-                <div class="filter-group">
-                    <label id="lbl-route">Route (Optional)</label>
-                    <select id="route-select">
-                        <option value="">All Routes</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label id="lbl-from">Select From</label>
-                    <select id="from-select">
-                        <option value="">Select Starting Location</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label id="lbl-to">Select To</label>
-                    <select id="to-select">
-                        <option value="">Select Destination</option>
-                    </select>
-                </div>
-
-                <div class="filter-group" style="margin-top: 1.5rem">
-                    <button id="calculate-btn" class="nav-btn"
-                        style="width: 100%; justify-content: center; background: var(--primary); color: white; border-color: var(--primary); font-size: 1rem; padding: 0.8rem;">
-                        <span id="lbl-calc-btn">Calculate Fare</span>
+                <div class="header-action-group">
+                    <button id="settings-btn" class="theme-toggle" title="Settings" aria-label="Settings">
+                        <i data-lucide="settings"></i>
+                    </button>
+                    <button id="theme-btn" class="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+                        <i data-lucide="moon" class="theme-icon"></i>
                     </button>
                 </div>
             </div>
 
+            <!-- Language Switcher Desktop -->
+            <div class="filter-group">
+                <label id="lbl-lang">Language / ভাষা</label>
+                <div class="range-grid">
+                    <button class="nav-btn active lang-btn" data-lang="en">
+                        <span>English</span>
+                    </button>
+                    <button class="nav-btn lang-btn" data-lang="bn">
+                        <span>বাংলা</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-divider"></div>
+
+            <!-- Fare Calculator Controls in Sidebar (Desktop) -->
+            <div class="sidebar-calculator-controls" id="sidebar-calc-section">
+                <!-- Route filter -->
+                <div class="filter-group">
+                    <label id="lbl-route">Route (Optional)</label>
+                    <div class="select-wrapper">
+                        <i data-lucide="route" class="select-icon"></i>
+                        <select id="route-select">
+                            <option value="">All Routes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- From select -->
+                <div class="filter-group">
+                    <label id="lbl-from">Select From</label>
+                    <div class="select-wrapper">
+                        <i data-lucide="map-pin" class="select-icon from-icon"></i>
+                        <select id="from-select">
+                            <option value="">Select Starting Location</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div class="swap-container">
+                    <button id="swap-btn" class="swap-btn" title="Swap Origin and Destination" aria-label="Swap Origin and Destination">
+                        <i data-lucide="arrow-down-up" class="swap-icon"></i>
+                        <span id="lbl-swap" class="swap-text">Swap Locations</span>
+                    </button>
+                </div>
+
+                <!-- To select -->
+                <div class="filter-group">
+                    <label id="lbl-to">Select To</label>
+                    <div class="select-wrapper">
+                        <i data-lucide="navigation" class="select-icon to-icon"></i>
+                        <select id="to-select">
+                            <option value="">Select Destination</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Popular Stops Chips -->
+                <div class="popular-hubs-section">
+                    <div class="popular-header">
+                        <label id="lbl-popular">Popular Hubs</label>
+                    </div>
+                    <div class="chips-container" id="popular-chips">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Student Concession Toggle -->
+                <div class="student-pass-card">
+                    <div class="student-pass-info">
+                        <div class="student-icon-box">
+                            <i data-lucide="graduation-cap"></i>
+                        </div>
+                        <div>
+                            <span id="lbl-student-title" class="student-title">Student Pass</span>
+                            <span id="lbl-student-sub" class="student-sub">50% concession</span>
+                        </div>
+                    </div>
+                    <label class="switch" for="student-pass-toggle" aria-label="Toggle Student Concession">
+                        <input type="checkbox" id="student-pass-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="calc-action-row">
+                    <button id="calculate-btn" class="primary-btn">
+                        <i data-lucide="calculator"></i>
+                        <span id="lbl-calc-btn">Calculate Fare</span>
+                    </button>
+                    <button id="clear-btn" class="secondary-btn" title="Reset Selections" aria-label="Reset Selections">
+                        <i data-lucide="rotate-ccw"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Links -->
             <div class="sidebar-footer">
                 <nav class="nav-links">
                     <button class="nav-btn active" data-view="grid-view">
@@ -128,70 +181,333 @@
                         <i data-lucide="table" class="nav-icon"></i>
                         <span id="nav-chart">Fare Chart</span>
                     </button>
+                    <button class="nav-btn" data-view="routes-view">
+                        <i data-lucide="map" class="nav-icon"></i>
+                        <span id="nav-routes">All Routes</span>
+                    </button>
                 </nav>
             </div>
         </aside>
 
         <!-- Main Content Area -->
         <main>
+            <!-- Main Content Header -->
             <header class="main-header">
-                <h2 id="main-title">Fare Results</h2>
-                <p id="result-count">Select locations to calculate fare</p>
+                <div class="header-left">
+                    <h2 id="main-title">Fare Results</h2>
+                    <p id="result-count">Select starting location and destination</p>
+                </div>
+                <div class="header-right" id="header-extra">
+                    <!-- Dynamic view-specific tools rendered here -->
+                </div>
             </header>
 
             <div class="content-body">
-                <!-- Grid View for Results -->
+                <!-- VIEW 1: Calculator & Results Grid -->
                 <section id="grid-view" class="view-content">
-                    <div id="results-grid" style="display: flex; flex-direction: column; gap: 1rem;"></div>
-                </section>
-
-                <!-- Tree/Chart View -->
-                <section id="tree-view" class="view-content hidden">
-                    <div class="filter-group" style="max-width: 350px; margin-bottom: 1rem;">
-                        <label id="lbl-chart-route">Select Route for Chart</label>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <select id="chart-route-select" style="flex: 1;">
-                            </select>
-                            <button id="chart-prev-btn" class="nav-btn"
-                                style="padding: 0.4rem; justify-content: center;" title="Previous Route">
-                                <i data-lucide="chevron-left" style="width: 20px; height: 20px;"></i>
-                            </button>
-                            <button id="chart-next-btn" class="nav-btn"
-                                style="padding: 0.4rem; justify-content: center;" title="Next Route">
-                                <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
+                    <!-- Mobile Filter Box (Shown only on small screens) -->
+                    <div class="mobile-calculator-card" id="mobile-calc-card">
+                        <!-- Cloned or synced inputs for responsive mobile use -->
+                        <div class="mobile-card-header">
+                            <div class="mobile-card-title">
+                                <i data-lucide="search" class="title-icon"></i>
+                                <span id="lbl-mobile-search-title">Plan Your Commute</span>
+                            </div>
+                            <button id="mobile-filter-collapse-btn" class="icon-toggle-btn" title="Toggle Search Form">
+                                <i data-lucide="chevron-up" id="filter-chevron"></i>
                             </button>
                         </div>
+
+                        <div class="mobile-card-body" id="mobile-filter-body">
+                            <!-- Mobile Route Select -->
+                            <div class="filter-group">
+                                <label id="lbl-route-mob">Route (Optional)</label>
+                                <div class="select-wrapper">
+                                    <i data-lucide="route" class="select-icon"></i>
+                                    <select id="route-select-mob">
+                                        <option value="">All Routes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Mobile From & To with Swap -->
+                            <div class="mobile-from-to-container">
+                                <div class="filter-group">
+                                    <label id="lbl-from-mob">Select From</label>
+                                    <div class="select-wrapper">
+                                        <i data-lucide="map-pin" class="select-icon from-icon"></i>
+                                        <select id="from-select-mob">
+                                            <option value="">Select Starting Location</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-swap-row">
+                                    <button id="swap-btn-mob" class="swap-btn-circle" title="Swap Locations" aria-label="Swap Locations">
+                                        <i data-lucide="arrow-down-up"></i>
+                                    </button>
+                                </div>
+
+                                <div class="filter-group">
+                                    <label id="lbl-to-mob">Select To</label>
+                                    <div class="select-wrapper">
+                                        <i data-lucide="navigation" class="select-icon to-icon"></i>
+                                        <select id="to-select-mob">
+                                            <option value="">Select Destination</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Popular Hubs -->
+                            <div class="popular-hubs-section">
+                                <div class="popular-header">
+                                    <label id="lbl-popular-mob">Popular Hubs</label>
+                                </div>
+                                <div class="chips-container" id="popular-chips-mob"></div>
+                            </div>
+
+                            <!-- Mobile Student Pass -->
+                            <div class="student-pass-card">
+                                <div class="student-pass-info">
+                                    <div class="student-icon-box">
+                                        <i data-lucide="graduation-cap"></i>
+                                    </div>
+                                    <div>
+                                        <span id="lbl-student-title-mob" class="student-title">Student Pass</span>
+                                        <span id="lbl-student-sub-mob" class="student-sub">50% concession</span>
+                                    </div>
+                                </div>
+                                <label class="switch" for="student-pass-toggle-mob" aria-label="Toggle Student Concession">
+                                    <input type="checkbox" id="student-pass-toggle-mob">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                            <!-- Mobile Action Buttons -->
+                            <div class="calc-action-row">
+                                <button id="calculate-btn-mob" class="primary-btn">
+                                    <i data-lucide="calculator"></i>
+                                    <span id="lbl-calc-btn-mob">Calculate Fare</span>
+                                </button>
+                                <button id="clear-btn-mob" class="secondary-btn" title="Reset Selections" aria-label="Reset Selections">
+                                    <i data-lucide="rotate-ccw"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div id="chart-container" style="overflow-x: auto; padding-bottom: 2rem;">
-                        <!-- Triangular table will be rendered here -->
+
+                    <!-- Results Section -->
+                    <div id="results-summary-banner" class="results-summary-banner hidden">
+                        <!-- Populated with found count and stats -->
+                    </div>
+
+                    <div id="results-grid" class="results-container">
+                        <!-- Initial Empty State -->
+                        <div class="empty-state-card" id="empty-state">
+                            <div class="empty-icon-wrap">
+                                <i data-lucide="compass" class="empty-icon"></i>
+                            </div>
+                            <h3 id="lbl-empty-title">Ready to Calculate Bus Fare</h3>
+                            <p id="lbl-empty-desc">Choose your starting bus stop and destination to find all matching bus routes, standard fares, student pass rates, and intermediate stops.</p>
+                            <div class="quick-tips">
+                                <div class="tip-item">
+                                    <i data-lucide="sparkles" class="tip-icon"></i>
+                                    <span id="lbl-tip-1">Tap popular hubs for 1-click station selection</span>
+                                </div>
+                                <div class="tip-item">
+                                    <i data-lucide="graduation-cap" class="tip-icon"></i>
+                                    <span id="lbl-tip-2">Toggle student pass for half-fare calculations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIEW 2: Tree/Chart View (Triangular Matrix) -->
+                <section id="tree-view" class="view-content hidden">
+                    <!-- Route Selector Bar & Route Stats Card -->
+                    <div class="chart-controls-panel">
+                        <div class="chart-route-picker">
+                            <label id="lbl-chart-route">Select Route for Chart</label>
+                            <div class="route-select-stepper">
+                                <button id="chart-prev-btn" class="stepper-btn" title="Previous Route" aria-label="Previous Route">
+                                    <i data-lucide="chevron-left"></i>
+                                </button>
+                                <div class="select-wrapper flex-grow">
+                                    <i data-lucide="route" class="select-icon"></i>
+                                    <select id="chart-route-select"></select>
+                                </div>
+                                <button id="chart-next-btn" class="stepper-btn" title="Next Route" aria-label="Next Route">
+                                    <i data-lucide="chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Route Overview Stat Badges -->
+                        <div class="route-stats-strip" id="route-stats-strip">
+                            <div class="stat-pill">
+                                <i data-lucide="map-pin"></i>
+                                <span><strong id="stat-stops-count">0</strong> <span id="lbl-stat-stops">Stops</span></span>
+                            </div>
+                            <div class="stat-pill">
+                                <i data-lucide="navigation"></i>
+                                <span><strong id="stat-distance">0</strong> <span id="lbl-stat-dist">km</span></span>
+                            </div>
+                            <div class="stat-pill">
+                                <i data-lucide="badge-percent"></i>
+                                <span><span id="lbl-stat-fare-range">Fare</span>: <strong id="stat-fare-range">10 - 50 Tk</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Table Matrix Zoom Controls & Instructions -->
+                        <div class="chart-toolbar">
+                            <div class="chart-hint">
+                                <i data-lucide="info"></i>
+                                <span id="lbl-chart-hint">Tap any cell to inspect fare between stations</span>
+                            </div>
+                            <div class="zoom-controls">
+                                <button id="zoom-out-btn" class="zoom-btn" title="Zoom Out" aria-label="Zoom Out">
+                                    <i data-lucide="zoom-out"></i>
+                                </button>
+                                <button id="zoom-reset-btn" class="zoom-btn" title="Reset Zoom" aria-label="Reset Zoom">
+                                    <i data-lucide="rotate-ccw"></i>
+                                </button>
+                                <button id="zoom-in-btn" class="zoom-btn" title="Zoom In" aria-label="Zoom In">
+                                    <i data-lucide="zoom-in"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selected Cell Banner (Sticky / Floating Inspector) -->
+                    <div id="selected-cell-inspector" class="cell-inspector hidden">
+                        <div class="inspector-content">
+                            <div class="inspector-route-flow">
+                                <div class="inspector-stop">
+                                    <i data-lucide="map-pin" class="from-icon"></i>
+                                    <span id="insp-from">Origin</span>
+                                </div>
+                                <i data-lucide="arrow-right" class="flow-arrow"></i>
+                                <div class="inspector-stop">
+                                    <i data-lucide="navigation" class="to-icon"></i>
+                                    <span id="insp-to">Destination</span>
+                                </div>
+                            </div>
+                            <div class="inspector-metrics">
+                                <div class="metric-block">
+                                    <span class="metric-label" id="lbl-insp-dist">Distance</span>
+                                    <span class="metric-val" id="insp-dist">0 km</span>
+                                </div>
+                                <div class="metric-block primary">
+                                    <span class="metric-label" id="lbl-insp-fare">Fare</span>
+                                    <span class="metric-val" id="insp-fare">0 Tk</span>
+                                </div>
+                                <div class="metric-block student">
+                                    <span class="metric-label" id="lbl-insp-student">Student</span>
+                                    <span class="metric-val" id="insp-student">0 Tk</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="close-inspector-btn" class="close-inspector" title="Close" aria-label="Close Inspector">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
+
+                    <!-- Triangular Table Container -->
+                    <div id="chart-container" class="table-container-responsive">
+                        <!-- Triangular table rendered dynamically -->
+                    </div>
+                </section>
+
+                <!-- VIEW 3: All Bus Routes Explorer -->
+                <section id="routes-view" class="view-content hidden">
+                    <div class="routes-toolbar">
+                        <div class="search-input-wrapper">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" id="routes-search-input" placeholder="Search routes by code, name, or stop..." autocomplete="off">
+                            <button id="clear-routes-search" class="clear-input-btn hidden" title="Clear Search" aria-label="Clear Search">
+                                <i data-lucide="x"></i>
+                            </button>
+                        </div>
+                        <div class="routes-counter-badge">
+                            <i data-lucide="bus"></i>
+                            <span id="routes-counter-text">Showing 112 Routes</span>
+                        </div>
+                    </div>
+
+                    <div id="all-routes-grid" class="routes-card-grid">
+                        <!-- Populated dynamically via JS -->
                     </div>
                 </section>
             </div>
         </main>
     </div>
 
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav">
+        <button class="mobile-nav-btn active" data-view="grid-view">
+            <i data-lucide="calculator"></i>
+            <span id="mob-nav-calc">Calculator</span>
+        </button>
+        <button class="mobile-nav-btn" data-view="tree-view">
+            <i data-lucide="table"></i>
+            <span id="mob-nav-chart">Fare Chart</span>
+        </button>
+        <button class="mobile-nav-btn" data-view="routes-view">
+            <i data-lucide="map"></i>
+            <span id="mob-nav-routes">All Routes</span>
+        </button>
+    </nav>
+
     <!-- Settings Modal -->
-    <div id="settings-modal" class="modal-overlay">
-        <div class="modal-content" style="max-width: 400px;">
-            <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:2rem;">
-                <div>
-                    <h2 id="modal-title" style="font-size:1.5rem; margin-top:0.5rem;"><i data-lucide="settings"
-                            style="display:inline-block; vertical-align:middle; margin-right:8px;"></i> Configuration
-                    </h2>
+    <div id="settings-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <i data-lucide="settings" class="modal-title-icon"></i>
+                    <h2 id="modal-title">Configuration</h2>
                 </div>
-                <button id="close-settings" class="close-modal-btn"><i data-lucide="x"></i></button>
+                <button id="close-settings" class="close-modal-btn" title="Close Settings" aria-label="Close Settings">
+                    <i data-lucide="x"></i>
+                </button>
             </div>
-            <div class="filter-group" style="margin-bottom: 1rem;">
-                <label id="lbl-min-fare">Minimum Fare (Tk)</label>
-                <input type="number" id="min-fare-input" value="10" step="1">
+
+            <div class="modal-body">
+                <div class="filter-group">
+                    <label id="lbl-min-fare">Minimum Fare (Tk)</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="circle-dollar-sign" class="input-icon"></i>
+                        <input type="number" id="min-fare-input" value="10" step="1" min="1">
+                    </div>
+                    <span class="input-help" id="lbl-min-fare-help">Official BRTA minimum fare is 10 Tk</span>
+                </div>
+
+                <div class="filter-group">
+                    <label id="lbl-fare-km">Fare per KM (Tk)</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="gauge" class="input-icon"></i>
+                        <input type="number" id="fare-km-input" value="2.45" step="0.01" min="0.5">
+                    </div>
+                    <span class="input-help" id="lbl-fare-km-help">Official BRTA rate is 2.45 Tk/km</span>
+                </div>
+
+                <div class="filter-group">
+                    <label id="lbl-student-concession">Student Concession (%)</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="graduation-cap" class="input-icon"></i>
+                        <input type="number" id="student-concession-input" value="50" step="5" min="10" max="90">
+                    </div>
+                    <span class="input-help" id="lbl-student-help">Default 50% discount for half-pass</span>
+                </div>
             </div>
-            <div class="filter-group" style="margin-bottom: 2rem;">
-                <label id="lbl-fare-km">Fare per KM (Tk)</label>
-                <input type="number" id="fare-km-input" value="2.45" step="0.01">
+
+            <div class="modal-footer">
+                <button id="save-settings-btn" class="primary-btn full-width">
+                    <i data-lucide="check"></i>
+                    <span id="lbl-save-settings">Save Settings</span>
+                </button>
             </div>
-            <button id="save-settings-btn" class="nav-btn"
-                style="width: 100%; justify-content: center; background: var(--primary); color: white; border-color: var(--primary);"><span
-                    id="lbl-save-settings">Save Settings</span></button>
         </div>
     </div>
 
